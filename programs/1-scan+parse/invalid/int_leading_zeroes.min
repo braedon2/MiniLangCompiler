@@ -1,0 +1,2 @@
+# tests that an int with leading zeroes is invalid
+var n: int = 00001;

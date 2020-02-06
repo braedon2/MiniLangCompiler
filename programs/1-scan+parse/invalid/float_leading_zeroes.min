@@ -1,0 +1,2 @@
+# tests that a float with leading zeroes is invalid
+var f: float = 0000001.1000

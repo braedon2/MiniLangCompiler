@@ -1,0 +1,2 @@
+# test that putting something that isn't an expression in a print statement is invalid
+print(read(x));

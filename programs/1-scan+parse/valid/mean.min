@@ -1,0 +1,26 @@
+# read a series of numbers and compute the mean
+
+var sum = 0.0; # type omitted
+var sample_size: int = 0;
+var keep_reading: bool = True;
+
+while (keep_reading)
+{
+    var current_num: float = 0.0;
+    var choice: string = "";
+
+    print("Enter a number: ");
+    read(current_num);
+    sum = sum + current_num;
+
+    print("Enter 'y' to read another number, enter anything else to stop reading");
+    read(choice);
+    if (choice != "y") {
+        keep_reading = False;
+    }
+}
+
+print("number of samples: ");
+print(sample_size);
+print("mean: ");
+print(sum / sample_size);

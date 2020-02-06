@@ -1,0 +1,37 @@
+# read two numbers and compute their greatest common divisor
+
+var a: int = 0;
+var b = 0;
+
+print("Enter the first number: ");
+read(a);
+print("Enter the second number: ");
+read(b);
+
+if (a < b) {
+    var tmp: int = 0;
+    tmp = a;
+    a = b;
+    b = tmp;
+}
+
+while (b > 0) {
+    var q: int = 0;
+    var r: int = 0;
+
+    q = a / b;
+    r = a - (q * b);
+
+    a = b;
+    b = r;
+}
+
+print("the greatest common divisor is: ");
+print(b);
+
+if (b == 1) {
+    print("the numbers are coprime");
+}
+else {
+    print("the numbers are not coprime");
+}

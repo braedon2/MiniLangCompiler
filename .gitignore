@@ -1,0 +1,6 @@
+*.o
+minic
+y.*
+lex.yy.c
+programs-solution
+test-solution.sh

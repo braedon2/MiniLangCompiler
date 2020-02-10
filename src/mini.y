@@ -64,8 +64,9 @@ stmt : tVAR tIDENTIFIER ':' tINT '=' exp ';'
      ;
 
 ifstmt : tIF '(' exp ')' '{' stmts '}'
-        | tIF '(' exp ')' '{' stmts '}' tELSE '{' stmts '}'
-        | tIF '(' exp ')' '{' stmts '}' tELSE ifstmt
+       | tIF '(' exp ')' '{' stmts '}' tELSE '{' stmts '}'
+       | tIF '(' exp ')' '{' stmts '}' tELSE ifstmt
+       ;
 
 exp : tIDENTIFIER
     | tINTVAL 

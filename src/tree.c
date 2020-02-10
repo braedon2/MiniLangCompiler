@@ -26,6 +26,14 @@ EXP *makeEXP_strLiteral(char *strLiteral)
     return exp;
 }
 
+EXP *makeEXP_floatLiteral(float floatLiteral)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindFloatLiteral;
+    exp->val.floatLiteral = floatLiteral;
+    return exp;
+}
+
 EXP *makeEXP_boolLiteral(int boolLiteral)
 {
     if (boolLiteral != 0 && boolLiteral != 1)
@@ -76,6 +84,78 @@ EXP *makeEXP_division(EXP *lfs, EXP *rhs)
     return exp;
 }
 
+EXP *makeEXP_GTEQ(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindGTEQ;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
+EXP *makeEXP_LTEQ(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindLTEQ;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
+EXP *makeEXP_lessThan(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindLessThan;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
+EXP *makeEXP_greaterThan(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindGreaterThan;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
+EXP *makeEXP_equal(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindEqual;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
+EXP *makeEXP_notEqual(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindNotEqual;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
+EXP *makeEXP_and(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindAnd;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
+EXP *makeEXP_or(EXP *lfs, EXP *rhs)
+{
+    EXP *exp = malloc(sizeof(EXP));
+    exp->kind = k_expressionKindOr;
+    exp->val.binary.lhs = lfs;
+    exp->val.binary.rhs = rhs;
+    return exp;
+}
+
 EXP *makeEXP_uMinus(EXP *exp)
 {
     EXP *e = malloc(sizeof(EXP));
@@ -92,7 +172,7 @@ EXP *makeEXP_uNot(EXP *exp)
     return e;
 }
 
-IFSTMT *makeIFSTMT_ifElse(EXP *condition, STMT_LIST *true_branch, STMT_LIST *false_branch)
+IFSTMT *makeIFSTMT_ifElse(EXP *condition, STMT *true_branch, STMT *false_branch)
 {
     IFSTMT *ifstmt = malloc(sizeof(IFSTMT));
     ifstmt->kind = k_ifstmtKindIfElse;
@@ -102,7 +182,7 @@ IFSTMT *makeIFSTMT_ifElse(EXP *condition, STMT_LIST *true_branch, STMT_LIST *fal
     return ifstmt;
 }
 
-IFSTMT *makeIFSTMT_ifElseIf(EXP *condition, STMT_LIST *true_branch, IFSTMT *false_branch)
+IFSTMT *makeIFSTMT_ifElseIf(EXP *condition, STMT *true_branch, IFSTMT *false_branch)
 {
     IFSTMT *ifstmt = malloc(sizeof(IFSTMT));
     ifstmt->kind = k_ifstmtKindIfElseIf;
@@ -155,7 +235,7 @@ STMT *makeSTMT_if(IFSTMT *ifstmt)
     return stmt;
 }
 
-STMT *makeSTMT_while(EXP *condition, STMT_LIST *body)
+STMT *makeSTMT_while(EXP *condition, STMT *body)
 {
     STMT *stmt = malloc(sizeof(STMT));
     stmt->kind = k_stmtKindWhile;

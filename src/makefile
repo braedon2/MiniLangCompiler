@@ -2,7 +2,7 @@
 CC = gcc -g
 
 all: lex.yy.o y.tab.o tree.o main.o
-	$(CC) -o minic -lfl lex.yy.o y.tab.o main.o
+	$(CC) -o minic -lfl lex.yy.o y.tab.o tree.o main.o
 
 lex.yy.c: mini.l y.tab.h
 	flex mini.l

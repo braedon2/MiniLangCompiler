@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "tree.h"
 #include "y.tab.h"
 
 int yylex();
+
+STMT *root;
 
 int main(int argc, char *argv[])
 {
